@@ -22,3 +22,9 @@
 [跨域问题和解决方案](https://github.com/chenhuiYj/blog/issues/7)
 
 [微信授权登录流程](https://github.com/chenhuiYj/blog/issues/8)
+
+### 反馈勘误
+
+如果发现笔记有记录错误，对笔记有疑问，或者有什么需要补充知识，可在对应的 issue 进行反馈和给出宝贵的建议
+
+如果觉得记录对您有帮助，欢迎 star 作为对笔者的鼓励

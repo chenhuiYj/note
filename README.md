@@ -16,6 +16,8 @@
 [vue 的 computed， watch ，filters 有什么区别](https://github.com/chenhuiYj/blog/issues/3)
 
 [v-model 实现原理](https://github.com/chenhuiYj/blog/issues/2)
+
+[vue 小问题](https://www.cnblogs.com/T888888/p/12600732.html)
 ### 5.http
 
 ### 其他

@@ -17,7 +17,10 @@
 
 [v-model 实现原理](https://github.com/chenhuiYj/blog/issues/2)
 
+[为什么使用v-for时必须添加唯一的key?](https://juejin.im/post/5aae19aa6fb9a028d4445d1a)
+
 [vue 小问题](https://www.cnblogs.com/T888888/p/12600732.html)
+
 [vue 小问题](https://www.cnblogs.com/zdz8207/p/vue-face-know.html)
 
 ### 5.http

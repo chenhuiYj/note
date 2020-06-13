@@ -19,6 +19,8 @@
 
 [为什么使用v-for时必须添加唯一的key?](https://juejin.im/post/5aae19aa6fb9a028d4445d1a)
 
+[vue $root $parent $children $attrs $options]()
+
 [vue 小问题](https://www.cnblogs.com/T888888/p/12600732.html)
 
 [vue 小问题](https://www.cnblogs.com/zdz8207/p/vue-face-know.html)

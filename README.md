@@ -21,6 +21,8 @@
 
 [vue $root $parent $children $attrs $options](https://github.com/chenhuiYj/blog/issues/10)
 
+[vuex 为什么不能直接改变值，而是通过 mutation](https://github.com/chenhuiYj/blog/issues/11)
+
 [vue 小问题](https://www.cnblogs.com/T888888/p/12600732.html)
 
 [vue 小问题](https://www.cnblogs.com/zdz8207/p/vue-face-know.html)

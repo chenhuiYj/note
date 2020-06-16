@@ -29,6 +29,10 @@
 
 ### 5.http
 
+### 6.练习题
+
+[1.找出字符串包含的所有连续的数字](https://github.com/chenhuiYj/blog/issues/12)
+
 ### 其他
 [跨域问题和解决方案](https://github.com/chenhuiYj/blog/issues/7)
 

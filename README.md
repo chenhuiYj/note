@@ -32,6 +32,9 @@
 ### 6.练习题
 
 [1.找出字符串包含的所有连续的数字](https://github.com/chenhuiYj/blog/issues/12)
+[2.不使用数组内置 API 实现等差数组](https://github.com/chenhuiYj/blog/issues/13)
+[3.字符串乱码问题](https://github.com/chenhuiYj/blog/issues/14)
+[4.间隔特定的时间执行函数](https://github.com/chenhuiYj/blog/issues/15)
 
 ### 其他
 [跨域问题和解决方案](https://github.com/chenhuiYj/blog/issues/7)

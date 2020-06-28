@@ -39,6 +39,8 @@
 
 [4.间隔特定的时间执行函数](https://github.com/chenhuiYj/blog/issues/15)
 
+[5.模拟实现开闭区间](https://github.com/chenhuiYj/note/issues/16)
+
 ### 其他
 [跨域问题和解决方案](https://github.com/chenhuiYj/blog/issues/7)
 

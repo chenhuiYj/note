@@ -41,6 +41,8 @@
 
 [5.模拟实现开闭区间](https://github.com/chenhuiYj/note/issues/16)
 
+[6.猴子大王](https://github.com/chenhuiYj/note/issues/17)
+
 ### 其他
 [跨域问题和解决方案](https://github.com/chenhuiYj/blog/issues/7)
 

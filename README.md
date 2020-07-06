@@ -45,7 +45,7 @@
 
 [7.取出数组里面的负数](https://github.com/chenhuiYj/note/issues/18)
 
-[8.练习题8：找出终点城市](https://github.com/chenhuiYj/note/issues/19)
+[8.找出终点城市](https://github.com/chenhuiYj/note/issues/19)
 
 ### 其他
 [跨域问题和解决方案](https://github.com/chenhuiYj/blog/issues/7)

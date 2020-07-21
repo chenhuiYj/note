@@ -10,6 +10,8 @@
 [async 和 await 的原理](https://github.com/chenhuiYj/blog/issues/5)
 
 [this 指向](https://github.com/chenhuiYj/blog/issues/4)
+
+[BigInt 笔记](https://github.com/chenhuiYj/blog/issues/22)
 ### 4.vue
 [vue 生命周期](https://github.com/chenhuiYj/blog/issues/6)
 

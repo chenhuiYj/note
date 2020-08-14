@@ -31,6 +31,8 @@
 
 [vue 小问题2](https://www.cnblogs.com/zdz8207/p/vue-face-know.html)
 
+[vue 小问题3](https://github.com/chenhuiYj/blog/issues/24)
+
 ### 5.http
 
 ### 6.练习题

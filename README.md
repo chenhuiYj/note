@@ -59,6 +59,9 @@
 
 
 ### 其他
+
+[babel 的简介](https://github.com/chenhuiYj/note/issues/25)
+
 [跨域问题和解决方案](https://github.com/chenhuiYj/blog/issues/7)
 
 [微信授权登录流程](https://github.com/chenhuiYj/blog/issues/8)

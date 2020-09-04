@@ -33,9 +33,13 @@
 
 [vue 小问题3](https://github.com/chenhuiYj/blog/issues/24)
 
-### 5.http
+### 5.react
 
-### 6.练习题
+[react useEffect 执行优化](https://github.com/chenhuiYj/blog/issues/26)
+
+### 6.http
+
+### 7.练习题
 
 [1.找出字符串包含的所有连续的数字](https://github.com/chenhuiYj/blog/issues/12)
 

@@ -1,8 +1,12 @@
 个人开发笔记
 
 ### 1.HTML
+
 [localStorage 的 优劣对比](https://github.com/chenhuiYj/blog/issues/1)
+
 ### 2.CSS
+
+[flex 属性的二三事](https://github.com/chenhuiYj/blog/issues/28)
 
 ### 3.Javascript
 [代替 if-else 的姿势（二）](https://github.com/chenhuiYj/blog/issues/9)

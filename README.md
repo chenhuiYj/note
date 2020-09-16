@@ -22,7 +22,9 @@
 [BigInt 笔记](https://github.com/chenhuiYj/blog/issues/22)
 
 [require 和 import 的区别](https://github.com/chenhuiYj/blog/issues/23)
+
 ### 4.vue
+
 [vue 生命周期](https://github.com/chenhuiYj/blog/issues/6)
 
 [vue 的 computed， watch ，filters 有什么区别](https://github.com/chenhuiYj/blog/issues/3)

@@ -11,6 +11,8 @@
 
 [伪类和伪元素](https://github.com/chenhuiYj/blog/issues/29)
 
+[CSS 为什么是从右往左解析](https://github.com/chenhuiYj/blog/issues/30)
+
 ### 3.Javascript
 [代替 if-else 的姿势（二）](https://github.com/chenhuiYj/blog/issues/9)
 

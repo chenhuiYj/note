@@ -23,6 +23,8 @@
 
 [require 和 import 的区别](https://github.com/chenhuiYj/blog/issues/23)
 
+[JSON.parse(JSON.stringify(obj)) 注意的坑](https://github.com/chenhuiYj/blog/issues/31)
+
 ### 4.vue
 
 [vue 生命周期](https://github.com/chenhuiYj/blog/issues/6)

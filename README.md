@@ -25,6 +25,8 @@
 
 [JSON.parse(JSON.stringify(obj)) 注意的坑](https://github.com/chenhuiYj/blog/issues/31)
 
+[继承](https://github.com/chenhuiYj/blog/issues/32)
+
 ### 4.vue
 
 [vue 生命周期](https://github.com/chenhuiYj/blog/issues/6)

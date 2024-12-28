@@ -6,6 +6,8 @@
 
 ### 2.CSS
 
+[css3新特性](https://github.com/chenhuiYj/note/issues/33)
+
 [flex 属性的二三事](https://github.com/chenhuiYj/blog/issues/28)
 
 [伪类和伪元素](https://github.com/chenhuiYj/blog/issues/29)

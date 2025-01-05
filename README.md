@@ -29,6 +29,8 @@
 
 [继承](https://github.com/chenhuiYj/blog/issues/32)
 
+[ES6之promise](https://github.com/chenhuiYj/note/issues/34)
+
 ### 4.vue
 
 [vue 生命周期](https://github.com/chenhuiYj/blog/issues/6)

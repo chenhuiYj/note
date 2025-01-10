@@ -31,6 +31,8 @@
 
 [ES6之promise](https://github.com/chenhuiYj/note/issues/34)
 
+[ES6 之 async, await](https://github.com/chenhuiYj/note/issues/35)
+
 ### 4.vue
 
 [vue 生命周期](https://github.com/chenhuiYj/blog/issues/6)

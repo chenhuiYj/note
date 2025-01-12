@@ -15,6 +15,9 @@
 [CSS 为什么是从右往左解析](https://github.com/chenhuiYj/blog/issues/30)
 
 ### 3.Javascript
+
+[new 原理和实现](https://github.com/chenhuiYj/note/issues/36)
+
 [代替 if-else 的姿势（二）](https://github.com/chenhuiYj/blog/issues/9)
 
 [async 和 await 的原理](https://github.com/chenhuiYj/blog/issues/5)

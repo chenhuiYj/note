@@ -20,8 +20,6 @@
 
 [代替 if-else 的姿势（二）](https://github.com/chenhuiYj/blog/issues/9)
 
-[async 和 await 的原理](https://github.com/chenhuiYj/blog/issues/5)
-
 [this 指向](https://github.com/chenhuiYj/blog/issues/4)
 
 [BigInt 笔记](https://github.com/chenhuiYj/blog/issues/22)

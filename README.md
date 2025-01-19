@@ -2,6 +2,8 @@
 
 ### 1.HTML
 
+[html5 新特性](https://github.com/chenhuiYj/note/issues/37)
+
 [localStorage 的 优劣对比](https://github.com/chenhuiYj/blog/issues/1)
 
 ### 2.CSS

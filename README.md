@@ -1,4 +1,4 @@
-个人开发笔记
+![image](https://github.com/user-attachments/assets/c35e1954-0efd-4ab8-8769-9fca8c9e235d)个人开发笔记
 
 ### 1.HTML
 
@@ -31,6 +31,8 @@
 [JSON.parse(JSON.stringify(obj)) 注意的坑](https://github.com/chenhuiYj/blog/issues/31)
 
 [继承](https://github.com/chenhuiYj/blog/issues/32)
+
+[js 数据检测](https://github.com/chenhuiYj/note/issues/38)
 
 [ES6之promise](https://github.com/chenhuiYj/note/issues/34)
 

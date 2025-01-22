@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/c35e1954-0efd-4ab8-8769-9fca8c9e235d)个人开发笔记
+个人开发笔记
 
 ### 1.HTML
 

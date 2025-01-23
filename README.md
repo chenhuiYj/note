@@ -58,6 +58,8 @@
 
 [vue 小问题3](https://github.com/chenhuiYj/blog/issues/24)
 
+[vue3 - provide与 inject](https://github.com/chenhuiYj/note/issues/39)
+
 ### 5.react
 
 [react useEffect 执行优化](https://github.com/chenhuiYj/blog/issues/26)

@@ -60,6 +60,8 @@
 
 [vue3 - provide与 inject](https://github.com/chenhuiYj/note/issues/39)
 
+[vue3 - watch 和 watchEffect 的区别](https://github.com/chenhuiYj/note/issues/40)
+
 ### 5.react
 
 [react useEffect 执行优化](https://github.com/chenhuiYj/blog/issues/26)

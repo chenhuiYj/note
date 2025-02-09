@@ -62,6 +62,8 @@
 
 [vue3 - watch 和 watchEffect 的区别](https://github.com/chenhuiYj/note/issues/40)
 
+[vue3 - 新增内置组件](https://github.com/chenhuiYj/note/issues/41)
+
 ### 5.react
 
 [react useEffect 执行优化](https://github.com/chenhuiYj/blog/issues/26)

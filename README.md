@@ -72,6 +72,8 @@
 
 ### 6.http
 
+[TCP 三次握手和四次挥手](https://github.com/chenhuiYj/blog/issues/43)
+
 ### 7.练习题
 
 [1.找出字符串包含的所有连续的数字](https://github.com/chenhuiYj/blog/issues/12)

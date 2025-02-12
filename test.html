@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON Data Table with Pagination</title>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        #table-container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .pagination button {
+            padding: 5px 10px;
+            margin: 0 5px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            background-color: #f7f7f7;
+        }
+        .pagination button.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .search-container {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        .search-container input {
+            padding: 5px;
+        }
+        .search-container button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .export-btn {
+            margin-bottom: 20px;
+            padding: 5px 15px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="search-container">
+    <button onclick="fetchData()">查询全部</button>
+    <button class="export-btn" onclick="exportToExcel()">导出为Excel</button>
+    <input type="text" id="searchDate" placeholder="输入日期（如2025-01-01）">
+    <input type="text" id="searchCode" placeholder="输入编号">
+    <button onclick="filterData()">查询</button>
+    <button onclick="groupDataByCode()">按编号分组</button>
+</div>
+
+<div id="table-container">
+    <h2>取水记录列表</h2>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>行号</th>
+                <th>日期</th>
+                <th>编号</th>
+                <th>水量（立方米）</th>
+            </tr>
+        </thead>
+        <tbody id="dataTableBody">
+            <!-- Data will be loaded here -->
+        </tbody>
+    </table>
+    <div class="pagination" id="pagination">
+        <!-- Pagination buttons will be loaded here -->
+    </div>
+</div>
+
+<script>
+let currentPage = 1;
+const rowsPerPage = 50; // 每页显示50行
+let totalData = [];
+
+// 发送AJAX请求到指定的接口
+function fetchData() {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://101.126.23.11:5555/restful/rpc', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            if (response.success && response.resultset) {
+                totalData = response.resultset;
+                displayPage(currentPage);
+                updatePagination(Math.ceil(totalData.length / rowsPerPage));
+            } else {
+                console.error('请求失败:', response.err);
+                document.querySelector('#dataTableBody').innerHTML = "<tr><td colspan='4'>Error: " + response.err + "</td></tr>";
+            }
+        } else if (xhr.readyState === 4) {
+            console.error('请求失败:', xhr.statusText);
+            document.querySelector('#dataTableBody').innerHTML = "<tr><td colspan='4'>Error: " + xhr.statusText + "</td></tr>";
+        }
+    };
+    const requestBody = JSON.stringify({
+        "db": "psd",
+        "function": "SmartWaterMeter",
+        "page": currentPage,
+        "rows": rowsPerPage
+    });
+    xhr.send(requestBody);
+}
+
+// 显示数据
+function displayPage(page) {
+    const start = (page - 1) * rowsPerPage;
+    const end = start + rowsPerPage;
+    const pageData = totalData.slice(start, end);
+    const tableBody = document.getElementById('dataTableBody');
+    tableBody.innerHTML = ''; // 清空表格体
+
+    pageData.forEach((item, index) => {
+        const row = tableBody.insertRow();
+        row.insertCell(0).textContent = start + index + 1;
+        row.insertCell(1).textContent = item.deviceClock; // 日期
+        row.insertCell(2).textContent = item.deviceCode;  // 编号
+        row.insertCell(3).textContent = (parseFloat(item.deviceTotalData) / 1000).toFixed(2) + " 立方米"; // 用量除以1000，显示立方米
+    });
+}
+
+// 更新分页按钮
+function updatePagination(totalPages) {
+    const pagination = document.getElementById('pagination');
+    pagination.innerHTML = ''; // 清空分页按钮
+
+    for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.disabled = i === currentPage;
+        button.className = i === currentPage ? 'active' : '';
+        button.onclick = function () {
+            currentPage = parseInt(this.textContent);
+            displayPage(currentPage);
+        };
+        pagination.appendChild(button);
+    }
+}
+
+// 按日期和编号过滤数据
+function filterData() {
+    const searchDate = document.getElementById('searchDate').value.trim();
+    const searchCode = document.getElementById('searchCode').value.trim();
+    let filteredData = totalData;
+
+    if (searchDate) {
+        filteredData = filteredData.filter(item => item.deviceClock === searchDate);
+    }
+    if (searchCode) {
+        filteredData = filteredData.filter(item => item.deviceCode === searchCode);
+    }
+
+    displayFilteredData(filteredData);
+}
+
+// 显示过滤后的数据
+function displayFilteredData(data) {
+    const tableBody = document.getElementById('dataTableBody');
+    tableBody.innerHTML = ''; // 清空表格体
+
+    data.forEach((item, index) => {
+        const row = tableBody.insertRow();
+        row.insertCell(0).textContent = index + 1;
+        row.insertCell(1).textContent = item.deviceClock; // 日期
+        row.insertCell(2).textContent = item.deviceCode;  // 编号
+        row.insertCell(3).textContent = (parseFloat(item.deviceTotalData) / 1000).toFixed(2) ; // 用量除以1000，显示立方米
+    });
+}
+
+// 按编号分组并生成日期对应的用水量
+function groupDataByCode() {
+    const groupedData = totalData.reduce((acc, item) => {
+        const { deviceCode, deviceClock, deviceTotalData } = item;
+        const key = `${deviceCode}-${deviceClock}`;
+        if (!acc[key]) {
+            acc[key] = {
+                deviceCode,
+                deviceClock,
+                totalWater: 0
+            };
+        }
+        acc[key].totalWater += parseFloat(deviceTotalData) / 1000;
+        return acc;
+    }, {});
+
+    const result = Object.values(groupedData).map((item, index) => {
+        return {
+            id: index + 1,
+            deviceClock: item.deviceClock,
+            deviceCode: item.deviceCode,
+            totalWater: item.totalWater.toFixed(2) 
+        };
+    });
+
+    displayGroupedData(result);
+}
+
+// 显示分组后的数据
+function displayGroupedData(data) {
+    const tableBody = document.getElementById('dataTableBody');
+    tableBody.innerHTML = ''; // 清空表格体
+
+    data.forEach(item => {
+        const row = tableBody.insertRow();
+        row.insertCell(0).textContent = item.id;
+        row.insertCell(1).textContent = item.deviceClock; // 日期
+        row.insertCell(2).textContent = item.deviceCode;  // 编号
+        row.insertCell(3).textContent = item.totalWater; // 总用水量
+    });
+}
+
+    // 导出到Excel的功能
+    function exportToExcel() {
+        const worksheet = XLSX.utils.aoa_to_sheet([
+            ["行号", "日期", "编号", "水量（立方米）"],
+            ...totalData.map(item => [
+                item.id, item.deviceClock, item.deviceCode, (parseFloat(item.deviceTotalData) / 1000).toFixed(2)
+            ])
+        ]);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+        XLSX.writeFile(workbook, "data.xlsx");
+    }
+
+    // 页面加载完成后发送请求
+    document.addEventListener('DOMContentLoaded', function () {
+        fetchData();
+    });
+</script>
+
+</body>
+</html>

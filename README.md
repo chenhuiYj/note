@@ -75,6 +75,8 @@
 
 [TCP 三次握手和四次挥手](https://github.com/chenhuiYj/blog/issues/43)
 
+[跨域问题和解决方案](https://github.com/chenhuiYj/blog/issues/7)
+
 ### 7.练习题
 
 [1.找出字符串包含的所有连续的数字](https://github.com/chenhuiYj/blog/issues/12)
@@ -102,8 +104,6 @@
 ### 其他
 
 [babel 的简介](https://github.com/chenhuiYj/note/issues/25)
-
-[跨域问题和解决方案](https://github.com/chenhuiYj/blog/issues/7)
 
 [微信授权登录流程](https://github.com/chenhuiYj/blog/issues/8)
 

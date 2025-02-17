@@ -101,6 +101,10 @@
 
 [11.写字符串需要的行数](https://github.com/chenhuiYj/note/issues/27)
 
+### 常用函数
+
+[防抖与节流](https://github.com/chenhuiYj/note/issues/44)
+
 ### 其他
 
 [babel 的简介](https://github.com/chenhuiYj/note/issues/25)

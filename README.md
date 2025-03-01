@@ -69,6 +69,8 @@
 
 [vue3 - 自定义hook](https://github.com/chenhuiYj/note/issues/45)
 
+[vue3 - setup](https://github.com/chenhuiYj/note/issues/46)
+
 ### 5.react
 
 [react useEffect 执行优化](https://github.com/chenhuiYj/blog/issues/26)

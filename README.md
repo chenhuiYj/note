@@ -61,6 +61,10 @@
 
 [vue 小问题3](https://github.com/chenhuiYj/blog/issues/24)
 
+[vue3 - setup](https://github.com/chenhuiYj/note/issues/46)
+
+[vue3 - 选项式API和组合式API](https://github.com/chenhuiYj/note/issues/47)
+
 [vue3 - provide与 inject](https://github.com/chenhuiYj/note/issues/39)
 
 [vue3 - watch 和 watchEffect 的区别](https://github.com/chenhuiYj/note/issues/40)
@@ -68,8 +72,6 @@
 [vue3 - 新增内置组件](https://github.com/chenhuiYj/note/issues/41)
 
 [vue3 - 自定义hook](https://github.com/chenhuiYj/note/issues/45)
-
-[vue3 - setup](https://github.com/chenhuiYj/note/issues/46)
 
 ### 5.react
 

@@ -117,6 +117,10 @@
 
 [微信授权登录流程](https://github.com/chenhuiYj/blog/issues/8)
 
+### 职场
+
+[关于外包的一些考虑](https://github.com/chenhuiYj/note/issues/48)
+
 ### 反馈勘误
 
 如果发现笔记有记录错误，对笔记有疑问，或者有什么需要补充知识，可在对应的 issue 进行反馈和给出宝贵的建议

@@ -65,6 +65,8 @@
 
 [vue3 - 选项式API和组合式API](https://github.com/chenhuiYj/note/issues/47)
 
+[vue3 - reactive和ref 的区别](https://github.com/chenhuiYj/note/issues/49)
+
 [vue3 - provide与 inject](https://github.com/chenhuiYj/note/issues/39)
 
 [vue3 - watch 和 watchEffect 的区别](https://github.com/chenhuiYj/note/issues/40)

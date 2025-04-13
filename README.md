@@ -87,6 +87,8 @@
 
 [react - mobx](https://github.com/chenhuiYj/note/issues/53)
 
+[react - 受控组件和非受控组件](https://github.com/chenhuiYj/note/issues/54)
+
 ### 6.http
 
 [TCP 三次握手和四次挥手](https://github.com/chenhuiYj/blog/issues/43)

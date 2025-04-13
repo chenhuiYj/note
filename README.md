@@ -79,6 +79,10 @@
 
 ### 5.react
 
+[react - 受控组件和非受控组件](https://github.com/chenhuiYj/note/issues/54)
+
+[react - 有状态组件和无状态组件](https://github.com/chenhuiYj/note/issues/55)
+
 [react useEffect 执行优化](https://github.com/chenhuiYj/blog/issues/26)
 
 [react - class 组件和 function 组件](https://github.com/chenhuiYj/blog/issues/51)
@@ -86,8 +90,6 @@
 [react - context](https://github.com/chenhuiYj/note/issues/52)
 
 [react - mobx](https://github.com/chenhuiYj/note/issues/53)
-
-[react - 受控组件和非受控组件](https://github.com/chenhuiYj/note/issues/54)
 
 ### 6.http
 

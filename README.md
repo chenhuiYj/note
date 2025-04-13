@@ -85,6 +85,8 @@
 
 [react - context](https://github.com/chenhuiYj/note/issues/52)
 
+[react - mobx](https://github.com/chenhuiYj/note/issues/53)
+
 ### 6.http
 
 [TCP 三次握手和四次挥手](https://github.com/chenhuiYj/blog/issues/43)

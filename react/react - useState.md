@@ -16,7 +16,7 @@ function Counter() {
 export default Counter;
 ```
 
-### 1.useState 的实现
+### 1.useState 的原理与实现
 ```js
 // React 内部 useState 实现（简化版本）
 function useState(initialState) {
@@ -51,23 +51,41 @@ setState(action)：setState 函数通过入队一个新的状态更新来触发�
 
 ### 2.useState 的执行顺序和调用规则
 
-在 React 中，useState 的调用顺序必须保持一致，因为 React 依赖 Hook 的调用顺序来将状态和组件实例关联起来。这就是为什么不能在条件语句或循环中调用 Hook。
+首先，React 依赖 Hook 的调用顺序，而不是变量名。
+
+每次组件渲染，React 都会按照 Hook 的执行顺序，在内部记录每一个 Hook 对应的状态，就像维护一个数组一样，只要调用顺序不变，React 就能正确管理状态。
 
 ```js
-function Example() {
-  const [count, setCount] = useState(0);
+hookStates = [
+  useState(0),   // index 0
+  useState('')   // index 1
+];
+```
 
-  if (count > 10) {
-    // 错误！不能在条件语句中调用 Hook
-    const [extraState, setExtraState] = useState(0);
+React 提供了两条核心规则来避免这类问题：
+
+只能在最顶层调用 Hook：不要在条件、循环、嵌套函数中调用 Hook；
+只能在 React 函数组件或自定义 Hook 中调用 Hook。
+
+这些规则的目标就是保证 Hook 的调用顺序在每次渲染中始终一致。
+
+```js
+function MyComponent({ isLoggedIn }) {
+  if (isLoggedIn) {
+    useState(1); // ❌ 错误用法
   }
-  
-  return <div>{count}</div>;
+  useEffect(() => {
+    // ...
+  }, []);
 }
 ```
-在每次渲染时，React 期望 useState 调用顺序保持一致。如果出现变化，React 将无法正确管理状态。
+第一次渲染时，isLoggedIn 是 true，useState(1) 被执行，React 记录它为第一个 Hook；
 
-3. setState 的批处理机制
+第二次渲染时，如果 isLoggedIn 是 false，useState(1) 没执行，useEffect 成了第一个 Hook。
+
+所以在 React 中，useState 的调用顺序必须保持一致，因为 React 依赖 Hook 的调用顺序来将状态和组件实例关联起来。这就是为什么不能在条件语句或循环中调用 Hook。
+
+### 3. setState 的批处理机制
 React 中的状态更新并不会立即发生。为了优化性能，React 会将多个状态更新“批处理”，即将多次 setState 调用合并为一次重新渲染。只有当 React 确定所有更新都准备好后，才会触发一次组件更新。
 
 例如，以下代码：
@@ -88,7 +106,20 @@ function Counter() {
   );
 }
 ```
-虽然 setCount 调用了两次，但 React 只会触发一次重新渲染。为了在这种情况下正确更新状态，React 将会批量更新状态队列，并在下一个渲染周期中应用最终的状态结果。
+虽然 setCount 调用了两次，但 React 只会触发一次重新渲染。上述的例子，实际等价于如下：
+
+上述的例子，实际等价于如下：
+
+```js
+Object.assign(
+  previousState,
+  {index: state.count+ 1},
+  {index: state.count+ 1},
+  ...
+)
+```
+
+为了在这种情况下正确更新状态，React 将会批量更新状态队列，并在下一个渲染周期中应用最终的状态结果。
 
 解决方案：函数式更新
 
@@ -112,10 +143,40 @@ function Counter() {
 ```
 在这个例子中，setCount 的回调函数能够确保每次更新都是基于最新的状态值进行的，这样状态就能正确递增两次。
 
-4. 总结
-useState 是 React 中一个基础而强大的状态管理工具。虽然它的使用非常简单，但其背后的实现包含了许多复杂的机制。通过本文的探讨，我们了解到：
+### 4.更新机制
 
-useState 是如何在函数组件的无状态函数调用中持久化状态的。
-React 是如何通过 Fiber 架构来管理和更新状态的。
-React 的状态更新机制以及批处理逻辑如何工作。
-如何通过函数式更新解决状态更新不及时的问题。
+setState的更新类型分成：异步更新和同步更新
+
+在组件生命周期或React合成事件中，setState是异步
+```js
+const [count, setCount] = useState(0);
+setCount(1)
+console.log(count); // 0
+```
+从上面可以看到，最终打印结果为0，并不能在执行完setCount之后立马拿到最新的count
+
+如果想要立刻获取更新后的值，在第二个参数的回调中更新后会执行
+```js
+setCount(1,()=>{
+    console.log(count); // 1
+})
+
+```
+
+在setTimeout或者原生dom事件中，setState是同步
+```js
+const [count, setCount] = useState(0);
+setTimeout(() => {
+    setCount(1)
+    console.log(count); // 1
+}, 0);
+```
+
+```js
+const [count, setCount] = useState(0);
+const btnEl = document.getElementById("btn");
+btnEl.addEventListener('click', () => {
+    setCount(1);
+    console.log(count); // 1
+})
+```

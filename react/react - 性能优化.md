@@ -5,9 +5,38 @@ React 项目性能优化可以组件层面的优化、使用不可变数据、�
 ### 1.组件层面的优化
 组件是React应用的基石，优化组件是提升性能的第一步。优化的关键是确保组件只在真正需要时才进行更新。
 
+React 中父组件每次更新都会导致子组件重新渲染，即使子组件的状态没有发生变化。为了减少重复渲染，我们可以使用 React.memo来缓存组件，这样只有在传入组件的状态值发生变化时才会从新渲染。如果传入的值相同，则会返回缓存的组件。
+
 PureComponent 和 React.memo：PureComponent 和 React.memo 根据props和state的浅比较避免不必要的渲染。PureComponent是针对类组件的，而React.memo则用于函数组件。
 
 shouldComponentUpdate：对于那些不能转为PureComponent或使用React.memo的情况，可以通过实现shouldComponentUpdate生命周期方法，手动控制组件的更新逻辑。
+
+
+```js
+export default function ParentComponent(props) {
+  return (
+    <div>
+      <SomeComponent someProp={props.somePropValue}
+    <div>
+      <AnotherComponent someOtherProp={props.someOtherPropValue} />
+    </div>
+   </div>
+ )
+}
+
+export default function SomeComponent(props) {
+  return (
+    <div>{props.someProp}</div>  
+  )
+}
+
+// 只要props.somePropValue 发生变化，不论props.someOtherPropValue是否发生变化该组件都会发生变化
+export default function AnotherComponent(props) {
+  return (
+    <div>{props.someOtherProp}</div>  
+  )
+}
+```
 
 ### 2.使用不可变数据
 不可变数据有利于快速比较数据是否发生变化，因此在性能优化中扮演着重要角色。
@@ -59,3 +88,111 @@ React.lazy 和 Suspense：结合React.lazy和Suspense可以对组件进行懒加
 优化数据传输：使用适当的数据格式（如JSON）、压缩响应内容或分批获取数据，以减少单次传输的数据量。
 
 在进行React项目性能优化时，开发者需要对项目的具体需求和问题点有深刻理解，并结合上述策略，寻找最适合自己项目的优化方案。优化是一个持续的过程，通过性能监测和分析来迭代优化，最终实现高性能的React应用。
+
+### 9.避免使用内联对象
+
+使用内联对象时，react会在每次渲染时重新创建对此对象的引用，这会导致接收此对象的组件将其视为不同的对象。因此，该组件对于props的千层比较始终返回false，导致组件一直渲染。
+
+```js
+// Don't do this!
+function Component(props) {
+  const aProp = { someProp: 'someValue' }
+  return <AComponent style={{ margin: 0 }} aProp={aProp} />  
+}
+
+// Do this instead :)
+const styles = { margin: 0 };
+function Component(props) {
+  const aProp = { someProp: 'someValue' }
+  return <AComponent style={styles} {...aProp} />  
+}
+```
+
+### 10.避免使用 匿名函数
+
+虽然匿名函数是传递函数的好方法，但它们在每次渲染上都有不同的引用。类似于内联对象。
+
+为了保证作为props传递给react组件的函数的相同引用，如果使用的类组件可以将其声明为类方法，如果使用的函数组件，可以使用useCallback钩子来保持相同的引用。
+
+示例：
+```js
+// 避免这样做
+function Component(props) {
+  return <AComponent onChange={() => props.callback(props.id)} />  
+}
+
+// 函数组件，优化方法一
+function Component(props) {
+  const handleChange = useCallback(() => props.callback(props.id), [props.id]);
+  return <AComponent onChange={handleChange} />  
+}
+
+// 类组件，优化方法二
+class Component extends React.Component {
+  handleChange = () => {
+   this.props.callback(this.props.id) 
+  }
+  render() {
+    return <AComponent onChange={this.handleChange} />
+  }
+}
+```
+
+### 11.调整CSS而不是强制组件加载和卸载
+有时保持组件加载的同时，通过CSS隐藏可能是有益的，而不是通过是否加载组件来隐藏。对于具有显著的加载或卸载时序的重型组件而言，这是有效的性能优化手段。
+
+将元素透明度调整为0对浏览器的成本消耗几乎为0（因为它不会导致重排），并且应该尽可能优先更改visibility或display。
+```js
+// 避免对大型的组件频繁对加载和卸载
+function Component(props) {
+  const [view, setView] = useState('view1');
+  return view === 'view1' ? <AComponent /> : <BComponent />  
+}
+
+// 使用该方式提升性能和速度
+const visibleStyles = { opacity: 1 };
+const hiddenStyles = { opacity: 0 };
+function Component(props) {
+  const [view, setView] = useState('view1');
+  return (
+    <React.Fragment>
+      <AComponent style={view === 'view1' ? visibleStyles : hiddenStyles}>
+      <BComponent style={view !== 'view1' ? hiddenStyles : visibleStyles}>
+    </React.Fragment>
+  )
+}
+```
+
+### 12.使用React.Fragment避免添加额外的DOM
+有些情况下，我们需要在组件中返回多个元素，例如下面的元素，但是在react规定组件中必须有一个父元素。
+```html
+	<h1>Hello world!</h1>
+	<h1>Hello there!</h1>
+	<h1>Hello there again!</h1>
+```
+javascript运行
+因此可能会这样做,但是这样做的话即使一切正常，也会创建额外的不必要的div。这会导致整个应用程序内创建许多无用的元素：
+```js
+	function Component() {
+        return (
+            <div>
+                <h1>Hello world!</h1>
+                <h1>Hello there!</h1>
+                <h1>Hello there again!</h1>
+            </div>
+        )
+    }
+```
+
+实际上页面上的元素越多，加载所需的时间就越多。为了减少不必要的加载时间，我们可以使React.Fragment来避免创建不必要的元素。
+```js
+	function Component() {
+        return (
+            <React.Fragment>
+                <h1>Hello world!</h1>
+                <h1>Hello there!</h1>
+                <h1>Hello there again!</h1>
+            </React.Fragment>
+        )
+    }
+```

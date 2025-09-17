@@ -36,7 +36,7 @@ useEffect(() => {
     return () => {
         if (timer) clearInterval(timer)
     }
-}, [//...])
+}, [/*...*/])
 ```
 ### 2-3.逻辑复用方便
 

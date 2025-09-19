@@ -130,3 +130,10 @@ flex-basis 可以设置一个具体的宽度，也可以是一个百分比。比
 > 2.注意，设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。
 
 ### 3.其他例子
+
+
+#### 3-1. flex:0 0 1;
+
+#### 3-2. flex:1;
+
+#### 3-3. flex auto auto 1;

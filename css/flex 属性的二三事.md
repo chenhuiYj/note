@@ -128,3 +128,5 @@ flex-basis 可以设置一个具体的宽度，也可以是一个百分比。比
 > 1.关于宽度计算，是根据 flex-grow 还是 flex-shrink。只要关注子元素的总宽度和父元素宽度对比就行了。如果父元素宽度足够：flex-grow有效，flex-shrink无效。如果父元素宽度不够：flex-shrink 有效，flex-grow无效。
 >
 > 2.注意，设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。
+
+### 3.其他例子

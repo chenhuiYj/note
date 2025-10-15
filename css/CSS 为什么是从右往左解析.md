@@ -2,8 +2,7 @@
 
 为什么这么说呢？首先给出下面的代码
 ```
-        <style>
-	
+    <style>
 		.demo p span{
 			color:#09f;
 		}

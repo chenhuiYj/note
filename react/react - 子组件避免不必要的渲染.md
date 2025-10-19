@@ -59,9 +59,12 @@ jsx
 const handleClick = useCallback(() => console.log("Clicked"), []);
 ```
 ‌验证工具‌
+
 ‌React DevTools‌：通过高亮更新检查不必要的渲染。
 ‌why-did-you-render‌：第三方库，用于检测重复渲染原因。
+
 ‌总结‌
+
 ‌优先使用 React.memo‌ 包裹子组件。
 ‌优化父组件状态更新‌，避免全局替换。
 ‌缓存复杂 props‌（useMemo/useCallback）。

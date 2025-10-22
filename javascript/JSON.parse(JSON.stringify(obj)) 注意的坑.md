@@ -1,1 +1,2 @@
-[你不知道的 JSON.stringify() 的威力](https://github.com/NieZhuZhu/Blog/issues/1)
+JSON.stringify() 九大特性
+

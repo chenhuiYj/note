@@ -2,7 +2,7 @@
 
 2.动画 animation
 
-3.形变 transform
+3.变形 transform
 
 4.圆角 border-radius
 

@@ -7,6 +7,7 @@
 4.圆角 border-radius
 
 5.选择器：
+
 	p:first-of-type（选择同级第一个 P 元素），
 
 	p:nth-of-type(n)(同级第 n 个 P 元素)

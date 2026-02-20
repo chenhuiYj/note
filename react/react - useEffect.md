@@ -1,6 +1,19 @@
 关于 react useEffect hook 可以看做是 componentDidMount，componentDidUpdate 和 componentWillUnmount 这三个函数的组合。
 
 ```js
+useEffect(()=>{},[])
+//初始渲染后一次
+useEffect(()=>{},[xxx])
+//初始渲染和依赖项变更后渲染
+useEffect(()=>{return XXXX},[]) 
+//useeffect回调函数内return在卸载组件之前执行
+useEffect(()=>{...})
+//没有第二项，初始渲染和重新渲染后都会执行
+```
+
+执行优化
+
+```js
 import React, { useState, useEffect } from 'react';
 
 function Example() {

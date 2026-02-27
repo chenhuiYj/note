@@ -207,10 +207,10 @@ const { increment } = store // ✅ actions 可以直接解构
 ### 2. 在 setup() 外使用 store
 
 ```js
-// ❌ 错误：在 setup 外直接使用
+// 错误：在 setup 外直接使用
 const store = useCounter()
 
-// ✅ 正确：传入 pinia 实例
+// 正确：传入 pinia 实例
 import { createPinia } from 'pinia'
 const pinia = createPinia()
 const store = useCounter(pinia)
@@ -233,12 +233,12 @@ app.use((req, res, next) => {
 
 ```js
 // 避免在模板中直接调用 store 方法
-// ❌ 错误
+// 错误
 <template>
   <div>{{ useCounter().count }}</div>
 </template>
 
-// ✅ 正确
+// 正确
 <script setup>
 const counter = useCounter()
 </script>

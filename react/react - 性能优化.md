@@ -169,8 +169,9 @@ function Component(props) {
 	<h1>Hello there!</h1>
 	<h1>Hello there again!</h1>
 ```
-javascript运行
+
 因此可能会这样做,但是这样做的话即使一切正常，也会创建额外的不必要的div。这会导致整个应用程序内创建许多无用的元素：
+
 ```js
 	function Component() {
         return (
@@ -183,7 +184,8 @@ javascript运行
     }
 ```
 
-实际上页面上的元素越多，加载所需的时间就越多。为了减少不必要的加载时间，我们可以使React.Fragment来避免创建不必要的元素。
+实际上页面上的元素越多，加载所需的时间就越多。为了减少不必要的加载时间，我们可以使 React.Fragment 来避免创建不必要的元素。
+
 ```js
 	function Component() {
         return (
